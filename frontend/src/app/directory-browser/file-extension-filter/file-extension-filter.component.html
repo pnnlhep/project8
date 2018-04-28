@@ -1,0 +1,9 @@
+<ul class='file-extension-filter'>
+  <li
+    *ngFor="let extension of extensions"
+    class='file-extension-filter__extension'
+    [class.selected]='_selectedExtension === extension'
+    (click)='_selectExtension(extension)'>
+      {{extension}}
+  </li>
+</ul>

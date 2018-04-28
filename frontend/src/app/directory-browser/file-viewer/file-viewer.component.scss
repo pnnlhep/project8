@@ -1,0 +1,148 @@
+.file-viewer {
+    align-items: center;
+    background-color: #000b;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0%;
+    width: 100vw;
+    z-index: 24;
+}
+
+.file-viewer__options {
+    border-radius: 5px;
+    box-shadow: 0 0 5px #fff;
+    display: flex;
+    flex-flow: column nowrap;
+    left: 93%;
+    padding: 10px 5px;
+    position: absolute;
+    top: 20px;
+    &>button {
+        background-color: #dedede;
+        border-radius: 100%;
+        border: 2px solid #555;
+        box-shadow: 0 0 5px #dedede;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.file-viewer__options_close svg {
+    transform: translate(7px, -7px) scale(0.8);
+}
+
+.file-viewer__nav>button {
+    animation-duration: 1.5s;
+    animation-iteration-count: 3;
+    animation-timing-function: linear;
+    position: relative;
+    transform: translateX(0);
+    &::before {
+        color: orange;
+        font-size: 70px;
+        font-weight: bold;
+    }
+    &:focus {
+        animation: none;
+    }
+}
+
+.file-viewer__nav_previous {
+    margin-right: 10px;
+    &::before {
+        content: '\f104';
+    }
+    &:hover {
+        animation-name: towards-left;
+    }
+}
+
+.file-viewer__display {
+    background-color: #555;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    height: 80vh;
+    width: 80vw;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.file-viewer__display_info {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 10px 0;
+}
+
+.file-viewer__display_info_previous-entry,
+.file-viewer__display_info_next-entry {
+    color: #ddd;
+    display: inline-block;
+    font-size: 15px;
+    width: 200px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.file-viewer__display_info_current-entry {
+    color: #fff;
+    display: inline-block;
+    flex-grow: 2;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.file-viewer__display_info_current-entry_counter {
+    font-size: 13px;
+    color: #ddd;
+}
+
+.file-viewer__display_viewer {
+    height: 85%;
+    margin: auto auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-viewer__display_viewer_image,
+.file-viewer__display_viewer_pdf {
+    box-shadow: 0 0 15px #000;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.file-viewer__nav_next {
+    margin-left: 10px;
+    &::before {
+        content: '\f105';
+    }
+    &:hover {
+        animation-name: towards-right;
+    }
+}
+
+@keyframes towards-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-20px);
+    }
+}
+
+@keyframes towards-right {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(20px);
+    }
+}

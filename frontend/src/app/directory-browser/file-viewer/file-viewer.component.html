@@ -1,0 +1,49 @@
+<div class='file-viewer' @fade>
+    <div class='file-viewer__options'>
+      <button class='icon file-viewer__options_close' title='Close file viewer'>
+        <close (click)='_close()'></close>
+      </button>
+    </div>
+    <div class='file-viewer__nav'>
+      <button
+        [style.visibility]='currentEntryIndex === _indexOfFirstNonDirectoryEntry ? "hidden" : "visible"'
+        class='icon file-viewer__nav_previous'
+        (click)='_previousEntry()'
+        title='Previous'>
+      </button>
+    </div>
+    <div class='file-viewer__display'>
+      <div class='file-viewer__display_info'>
+        <span class='file-viewer__display_info_previous-entry'>{{entries[currentEntryIndex - 1]?.name}}</span>
+        <span class='file-viewer__display_info_current-entry'>
+          {{_currentEntry.name}}<br/>
+          <span class='file-viewer__display_info_current-entry_counter'>
+            {{currentEntryIndex + 1}} / {{entries.length}}
+          </span>
+        </span>
+        <span class='file-viewer__display_info_next-entry'>{{entries[currentEntryIndex + 1]?.name}}</span>
+      </div>
+      <div class='file-viewer__display_viewer'>
+        <img
+          class='file-viewer__display_viewer_image'
+          alt='Unable to load image'
+          *ngIf='!_currentEntry.name.endsWith("pdf"); else pdf'
+          src='{{_currentEntry.parentPath + "/" + _currentEntry.name}}'/>
+        <ng-template #pdf>
+          <iframe
+          width='100%'
+          height='100%'
+          class='file-viewer__display_viewer_pdf'
+          [src]='_santizePdfFileUrl(_currentEntry.parentPath + "/" + _currentEntry.name)'></iframe>
+        </ng-template>
+      </div>
+    </div>
+    <div class='file-viewer__nav'>
+      <button
+        class='icon file-viewer__nav_next'
+        title='Next'
+        (click)='_nextEntry()'
+        [style.visibility]='currentEntryIndex === entries.length - 1 ? "hidden" : "visible"'>
+      </button>
+    </div>
+</div>

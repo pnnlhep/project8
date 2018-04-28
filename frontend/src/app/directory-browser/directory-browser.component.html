@@ -1,0 +1,17 @@
+<section class='file-browser'>
+  <file-extension-filter [extensions]='_fileExtensions' (extensionSelected)='_onExtensionSelected($event)'>
+  </file-extension-filter>
+  <filter-result
+    [directoryEntries]='_filteredEntries'
+    (entryIndexSelected)='_newEntrySelected($event)'
+    [canGoUpDirectoryPath]='_currentIndexOfEntryAsDirectory > 0'
+    (goUpDirectoryPath)='_goUpDirectoryPath()'>
+  </filter-result>
+  <file-viewer
+    @animate-if
+    *ngIf='_showFileViewer'
+    [entries]='_filteredEntries'
+    [currentEntryIndex]='_currentSelectedEntryIndex'
+    (close)='_showFileViewer = false'>
+  </file-viewer>
+</section>

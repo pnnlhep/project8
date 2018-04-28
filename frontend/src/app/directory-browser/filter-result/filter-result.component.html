@@ -1,0 +1,47 @@
+<div class='filter-result'>
+    <div class='filter-result__header'>
+        <span class='filter-result__header_nav'>
+          <button
+            class='icon filter-result__header_nav_backward'
+            title='Backward'
+            [disabled]='!canGoUpDirectoryPath'
+            (click)='goUpDirectoryPath.emit()'>
+          </button>
+          <!-- <button
+            class='icon filter-result__header_nav_forward'
+            title='Forward'
+            [disabled]='!canGoDownDirectoryPath'
+            (click)='goDownDirectoryPath.emit()'>
+          </button> -->
+        </span>
+        <span class='filter-result__header_directory-path'>
+          {{directoryEntries.length > 0 ? directoryEntries[0].parentPath: ""}}
+        </span>
+    </div>
+    <div class='filter-result__directory-entries'>
+        <div
+            title='{{entry.name}}'
+            *ngFor='let entry of directoryEntries;index as index, trackBy: _trackBy'
+            class='filter-result__directory-entry'
+            (click)='entryIndexSelected.emit(index)'>
+            <svg *ngIf='entry.isDirectory; else elseClause' class='filter-result__directory-entry_folder' viewBox="0 0 24 24">
+                <path d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" />
+            </svg>
+            <ng-template #elseClause>
+                <img
+                  alt='Loading'
+                  class='filter-result__directory-entry_image'
+                  *ngIf='!entry.name.endsWith( "pdf"); else pdf'
+                  src='{{entry.parentPath + "/" + entry.name}}' />
+                <ng-template #pdf>
+                    <i class='icon filter-result__directory-entry_pdf'></i>
+                </ng-template>
+            </ng-template>
+            <span class='filter-result__directory-entry_name'>
+              {{entry.name}}<br/>
+              ({{index+1}})
+            </span>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,42 @@
+.wait {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    overflow: hidden;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    .backdrop {
+        opacity: 1;
+        visibility: visible;
+    }
+    .dots {
+        z-index: 1000;
+    }
+    .dot {
+        margin: 10px;
+        animation: jump 500ms ease infinite alternate-reverse;
+        background-color: #fff;
+        border-radius: 100%;
+        box-shadow: 0px 0px 3px 1px #bbb;
+        display: inline-block;
+        height: 15px;
+        position: relative;
+        width: 15px;
+    }
+    .dot:nth-child(even) {
+        animation-delay: 200ms;
+    }
+}
+
+@keyframes jump {
+    from {
+        transform: translateY(-30px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

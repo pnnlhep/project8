@@ -1,0 +1,14 @@
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    path {
+        transition: transform 0.2s linear;
+        transform-origin: 50% 50%;
+        stroke: #000;
+    }
+    &:hover path {
+        transform: rotate(180deg);
+    }
+}

@@ -1,0 +1,12 @@
+main {
+    display: flex;
+    position: relative;
+    section {
+        box-shadow: 0 0 2px #ddd;
+        height: 100vh;
+        margin-left: 15px;
+        max-height: 100vh;
+        padding: 5px;
+        width: calc(100% - 315px);
+    }
+}
