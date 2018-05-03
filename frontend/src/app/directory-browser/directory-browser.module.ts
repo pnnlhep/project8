@@ -1,7 +1,6 @@
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { SharedModule } from '../shared/shared.module';
 import { DirectoryBrowserService } from './services/directory-browser.service';
@@ -14,8 +13,7 @@ import { FileViewerComponent } from './file-viewer/file-viewer.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    SharedModule,
-    PdfViewerModule
+    SharedModule
   ],
   declarations: [DirectoryBrowserComponent, FileExtensionFilterComponent, FilterResultComponent, FileViewerComponent],
   exports: [DirectoryBrowserComponent],
