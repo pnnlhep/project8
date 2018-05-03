@@ -7,8 +7,8 @@ import { StoreModule } from '@ngrx/store';
 import { DirectoryBrowserModule } from './directory-browser/directory-browser.module';
 import { AppComponent } from './app.component';
 import { WaitComponent } from './wait/wait.component';
-import { parentReducer } from './root-reducers';
-import { INITIAL_STATE } from './models/app-state';
+// import { parentReducer } from './root-reducers';
+// import { INITIAL_STATE } from './models/app-state';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -26,8 +26,8 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     HttpModule,
     DirectoryBrowserModule.forRoot(),
-    AppRoutingModule,
-    StoreModule.forRoot(parentReducer, { initialState: INITIAL_STATE }),
+    AppRoutingModule
+    // StoreModule.forRoot(parentReducer, { initialState: INITIAL_STATE }),
   ],
   providers: [],
   bootstrap: [AppComponent]
