@@ -8,12 +8,16 @@ import {
 } from '@angular/core';
 
 import { DirectoryEntry } from '../models/DirectoryEntry';
+import { scale } from '../../animations';
 
 @Component({
   selector: 'filter-result',
   templateUrl: './filter-result.component.html',
   styleUrls: ['./filter-result.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  animations: [
+    scale('scale')
+  ]
 })
 export class FilterResultComponent implements OnInit {
   @Input() directoryEntries: Array<DirectoryEntry>;

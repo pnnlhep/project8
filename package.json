@@ -1,0 +1,9 @@
+{
+  "name": "project8",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "yarn frontend && yarn backend",
+    "frontend": "cd frontend && ng build --prod",
+    "backend": "cd backend && yarn build"
+  }
+}

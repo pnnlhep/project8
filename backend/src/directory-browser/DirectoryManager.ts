@@ -1,15 +1,23 @@
-import { readdirSync, statSync, readFileSync } from 'fs';
+import { readdirSync, statSync } from 'fs';
 import { resolve } from 'path';
 import { homedir } from 'os';
-// import { Buffer } from 'buffer';
+
+import { ConfigurationManager } from '../ConfigurationManager';
 
 import { DirectoryEntry } from './DirectoryEntry';
 
 export class DirectoryManager {
-  private readonly _userHome: string = homedir();
+  private readonly _configManager = ConfigurationManager.getInstance();
+  private readonly _dipsParent = this._configManager.get('dipsParent');
+
+  constructor() {
+    if (this._dipsParent === '')
+      this._dipsParent = homedir();
+  }
 
   getDirectoryListings(pathToDirectoryFromDipsDir: string): DirectoryEntry[] {
-    const directoryToTraverse = resolve(this._userHome, pathToDirectoryFromDipsDir);
+    const directoryToTraverse = resolve(this._dipsParent, pathToDirectoryFromDipsDir);
+    console.log(directoryToTraverse);
     return readdirSync(directoryToTraverse).map(name => ({
       name,
       parentPath: pathToDirectoryFromDipsDir,
@@ -17,8 +25,4 @@ export class DirectoryManager {
     } as DirectoryEntry)).filter(listing => !listing.name.startsWith('.'));
   }
 
-  getFileData(pathToFileFromDipsDir: string): Buffer {
-    const fullPathToFile = resolve(this._userHome, pathToFileFromDipsDir);
-    return readFileSync(fullPathToFile);
-  }
 }

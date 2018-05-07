@@ -1,0 +1,1 @@
+docker run --rm --name project8-nginx -it -p 80:80 project8/nginx:1.13.12 /bin/bash

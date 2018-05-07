@@ -20,6 +20,7 @@
     </div>
     <div class='filter-result__directory-entries'>
         <div
+            @scale
             title='{{entry.name}}'
             *ngFor='let entry of directoryEntries;index as index, trackBy: _trackBy'
             class='filter-result__directory-entry'

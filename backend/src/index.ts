@@ -2,11 +2,14 @@ import { join } from 'path';
 
 import { App } from './App';
 import { DirectoryManager } from './directory-browser/DirectoryManager';
+import { ConfigurationManager } from './ConfigurationManager';
 
-const PORT = process.env.PORT || 8080;
 
 const APP = new App();
 const DIRECTORY_MANAGER = new DirectoryManager();
+const CONFIG_MANAGER = ConfigurationManager.getInstance();
+
+const PORT = process.env.PORT || CONFIG_MANAGER.get('port');
 
 APP.onBrowseDirectory((request, response) => {
   const directoryName = request.params.directory;
@@ -14,14 +17,6 @@ APP.onBrowseDirectory((request, response) => {
   response.json({
     children: DIRECTORY_MANAGER.getDirectoryListings(parentPathToDirectory)
   });
-});
-
-APP.onFetchFileData((request, response) => {
-  const filename = request.params.file;
-  const parentPathToFile = join(...request.query.parentPaths.split(','));
-  const buffer = DIRECTORY_MANAGER.getFileData(join(parentPathToFile, filename));
-  console.log(buffer);
-  response.write(buffer);
 });
 
 APP.start(PORT);

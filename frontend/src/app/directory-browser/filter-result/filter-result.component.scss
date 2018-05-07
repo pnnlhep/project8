@@ -67,6 +67,7 @@
 
 .filter-result__directory-entry {
     align-items: center;
+    backface-visibility: hidden;
     border: 2px solid #b8dbd9;
     border-radius: 5px;
     box-shadow: 0 0 7px #b8dbd9;

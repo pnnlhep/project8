@@ -1,6 +1,7 @@
 import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from '../shared/shared.module';
 import { DirectoryBrowserService } from './services/directory-browser.service';
@@ -13,7 +14,8 @@ import { FileViewerComponent } from './file-viewer/file-viewer.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule
   ],
   declarations: [DirectoryBrowserComponent, FileExtensionFilterComponent, FilterResultComponent, FileViewerComponent],
   exports: [DirectoryBrowserComponent],

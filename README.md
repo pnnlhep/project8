@@ -8,6 +8,7 @@ Then run `yarn start` or `npm start` to start serving up the frontend app using 
 
 Go to [http://localhost:4200](http://localhost:4200)
 
+Run `yarn build` or `npm run build` to create a production-optimized build and put the generated output in frontend/dist
 
 # Backend app
 

@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf dist && tsc",
-    "start": "rm -rf dist && tsc && node dist/index.js",
-    "watch": "rm -rf dist && tsc && nodemon dist/index.js",
-    "debug": "rm -rf dist && tsc && node --inspect dist/index.js"
+    "build": "rm -rf dist && tsc && cp config.json dist/config.json",
+    "start": "npm run build && node dist/index.js",
+    "watch": "npm run build && nodemon dist/index.js",
+    "debug": "npm run build && node --inspect dist/index.js"
   },
   "author": "Nhuy Van",
   "license": "IDGAF",

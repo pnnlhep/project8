@@ -11,3 +11,11 @@ export function fade(triggerName: string, duration = '500ms', easing = 'ease'): 
     transition(':leave, 1 => 0', animate(duration + ' ' + easing, style({ opacity: '0', visibility: 'hidden' })))
   ]);
 }
+export function scale(triggerName: string, duration = '800ms', easing = 'ease'): AnimationTriggerMetadata {
+  return trigger(triggerName, [
+    transition(':enter', [
+      style({ transform: 'scale(0)', opacity: '0' }),
+      animate(duration + ' ' + easing, style({ transform: 'scale(1)', opacity: '1' }))
+    ])
+  ]);
+}

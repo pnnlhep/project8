@@ -1,0 +1,1 @@
+docker build --rm -t project8/nginx:1.13.12 .
