@@ -6,23 +6,13 @@ import { HttpClient } from '@angular/common/http';
 export class DirectoryBrowserService {
 
   private readonly _endpoints = {
-    listings: `/project8/api/directory-browser/listings/:directory`,
-    filedata: `/project8/api/directory-browser/data/:file`
+    entries: `/project8/api/directory-browser/:directory/entries`
   };
 
   constructor(private _http: HttpClient) { }
 
   fetchAllEntriesInDir(dirname: string, parentPaths: Array<string>): Observable<any> {
-    return this._http.get(this._endpoints.listings.replace(':directory', dirname), {
-      params: {
-        parentPaths: parentPaths.join(',')
-      }
-    });
-  }
-
-  fetchDataForFileName(fileName: string, parentPaths: string[]) {
-    return this._http.get(this._endpoints.filedata.replace(':file', fileName), {
-      responseType: 'blob',
+    return this._http.get(this._endpoints.entries.replace(':directory', dirname), {
       params: {
         parentPaths: parentPaths.join(',')
       }

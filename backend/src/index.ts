@@ -15,7 +15,7 @@ APP.onBrowseDirectory((request, response) => {
   const directoryName = request.params.directory;
   const parentPathToDirectory = join(...request.query.parentPaths.split(','), directoryName);
   response.json({
-    children: DIRECTORY_MANAGER.getDirectoryListings(parentPathToDirectory)
+    children: DIRECTORY_MANAGER.getDirectoryEntries(parentPathToDirectory)
   });
 });
 

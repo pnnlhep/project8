@@ -5,7 +5,7 @@ import { DirectoryBrowserComponent } from './directory-browser/directory-browser
 
 const ROUTES: Routes = [
   {
-    path: 'directory/listings',
+    path: 'browse',
     component: DirectoryBrowserComponent
   }
 ];

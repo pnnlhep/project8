@@ -1,32 +1,25 @@
 import * as express from 'express';
 import * as http from 'http';
 import * as bodyParser from 'body-parser';
-import { resolve } from 'path';
 
 const INSTANCE: express.Express = express();
 const SERVER = http.createServer(INSTANCE);
 
 export class App {
   private readonly _directoryBrowserEndpoints = {
-    listings: '/project8/api/directory-browser/listings/:directory',
-    filedata: '/project8/api/directory-browser/data/:file'
+    entries: '/project8/api/directory-browser/:directory/entries'
   };
 
   constructor() {
     this._addMiddlewares();
-    INSTANCE.get(['/'], (_, response) => response.sendFile(resolve(__dirname, '../../frontend/dist/index.html')));
   }
 
   onBrowseDirectory(listener: (request: express.Request, response: express.Response) => void) {
-    INSTANCE.get(this._directoryBrowserEndpoints.listings, listener);
+    INSTANCE.get(this._directoryBrowserEndpoints.entries, listener);
   }
 
-  onFetchFileData(listener: (request: express.Request, response: express.Response) => void) {
-    INSTANCE.get(this._directoryBrowserEndpoints.filedata, listener);
-  }
-
-  start(port: string | number, cb?: () => void) {
-    SERVER.listen(port, cb || (() => console.log(`Server started on port ${port}`)));
+  start(port: number, cb?: () => void) {
+    SERVER.listen(port, '127.0.0.1', cb || (() => console.log(`Server started on port ${port}`)));
   }
 
   private _addMiddlewares() {
@@ -38,9 +31,6 @@ export class App {
       response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
       next();
     });
-    INSTANCE.use(express.static(resolve(__dirname, '../../dips')));
-    INSTANCE.use(express.static(resolve(__dirname, '../../frontend/dist')));
-    INSTANCE.use(express.static(resolve(__dirname)));
   }
 
 }

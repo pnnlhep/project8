@@ -15,9 +15,8 @@ export class DirectoryManager {
       this._dipsParent = homedir();
   }
 
-  getDirectoryListings(pathToDirectoryFromDipsDir: string): DirectoryEntry[] {
+  getDirectoryEntries(pathToDirectoryFromDipsDir: string): DirectoryEntry[] {
     const directoryToTraverse = resolve(this._dipsParent, pathToDirectoryFromDipsDir);
-    console.log(directoryToTraverse);
     return readdirSync(directoryToTraverse).map(name => ({
       name,
       parentPath: pathToDirectoryFromDipsDir,
