@@ -5,10 +5,9 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class DirectoryBrowserService {
 
-  private readonly _host = getUrl('', 8080);
   private readonly _endpoints = {
-    listings: `${this._host}/project8/api/directory-browser/listings/:directory`,
-    filedata: `${this._host}/project8/api/directory-browser/data/:file`
+    listings: `/project8/api/directory-browser/listings/:directory`,
+    filedata: `/project8/api/directory-browser/data/:file`
   };
 
   constructor(private _http: HttpClient) { }
@@ -30,10 +29,4 @@ export class DirectoryBrowserService {
     });
   }
 
-}
-
-const isDev = location.host.indexOf('localhost') > -1;
-let url = location.protocol + '//' + location.hostname;
-export function getUrl(endPoint: string, port: number) {
-  return url + (isDev ? ':' + port : '') + endPoint;
 }
