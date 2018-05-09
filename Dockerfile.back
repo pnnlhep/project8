@@ -4,8 +4,9 @@ COPY backend /build
 
 WORKDIR /build
 
+ENV PORT 80
 RUN \
   npm install && \
   npm run build
 
-CMD npm run build
+CMD node dist/index.js

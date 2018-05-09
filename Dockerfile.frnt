@@ -12,4 +12,4 @@ COPY ./nginx.conf /etc/nginx
 
 COPY --from=0 /build/dist /usr/share/nginx/html
 
-COPY ./project8.conf /etc/nginx/conf.d
+COPY ./project8_3.conf /etc/nginx/conf.d
