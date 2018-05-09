@@ -1,0 +1,11 @@
+FROM nodejs:9.11-alpine
+
+ADD backend /build
+
+WORKDIR /build
+
+RUN \
+  npm install && \
+  npm run build
+
+CMD npm run build

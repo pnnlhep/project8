@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker build -t "$DOCKER_REPO:$DOCKER_TAG" .
+docker build -f Dockerfile.frnt -t "$DOCKER_REPO:frnt-$DOCKER_TAG" .
+docker build -f Dockerfile.back -t "$DOCKER_REPO:back-$DOCKER_TAG" .
