@@ -1,4 +1,4 @@
-#!/bin/bash
-docker push "$DOCKER_REPO:$DOCKER_TAG"
+#!/bin/bash -xe
+
 docker push "$DOCKER_REPO:frnt-$DOCKER_TAG"
 docker push "$DOCKER_REPO:back-$DOCKER_TAG"
