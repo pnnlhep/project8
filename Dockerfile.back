@@ -1,6 +1,6 @@
 FROM node:9.11-alpine
 
-ADD backend /build
+COPY backend /build
 
 WORKDIR /build
 

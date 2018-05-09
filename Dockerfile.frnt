@@ -8,11 +8,8 @@ RUN \
 
 FROM nginx:1.13-alpine
 
-RUN \
-  mkdir -p /etc/nginx/conf.d && \
-
 COPY ./nginx.conf /etc/nginx
 
-COPY --from=0 ./build/dist /usr/share/nginx/html
+COPY --from=0 /build/dist /usr/share/nginx/html
 
 COPY ./project8.conf /etc/nginx/conf.d
