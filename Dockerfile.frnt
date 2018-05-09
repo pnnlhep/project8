@@ -4,7 +4,8 @@ COPY frontend /build
 
 RUN \
   cd /build && \
-  npm install && ls /build
+  npm install && \
+  npm run build
 
 FROM nginx:1.13-alpine
 
