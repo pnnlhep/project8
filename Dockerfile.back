@@ -5,6 +5,7 @@ COPY backend /build
 WORKDIR /build
 
 ENV PORT 80
+ENV ADDR 0.0.0.0
 RUN \
   npm install && \
   npm run build
