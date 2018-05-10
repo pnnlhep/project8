@@ -18,8 +18,8 @@ export class App {
     INSTANCE.get(this._directoryBrowserEndpoints.entries, listener);
   }
 
-  start(port: number, cb?: () => void) {
-    SERVER.listen(port, '127.0.0.1', cb || (() => console.log(`Server started on port ${port}`)));
+  start(addr: string, port: number, cb?: () => void) {
+    SERVER.listen(port, addr, cb || (() => console.log(`Server started on port ${port}`)));
   }
 
   private _addMiddlewares() {

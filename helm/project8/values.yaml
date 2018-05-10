@@ -1,0 +1,11 @@
+# Default values for project8.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+frontend:
+  ingress:
+    enabled: true
+
+backend:
+  ingress:
+    enabled: true

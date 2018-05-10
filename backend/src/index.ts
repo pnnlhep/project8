@@ -10,6 +10,7 @@ const DIRECTORY_MANAGER = new DirectoryManager();
 const CONFIG_MANAGER = ConfigurationManager.getInstance();
 
 const PORT = process.env.PORT || CONFIG_MANAGER.get('port');
+const ADDR = process.env.ADDR || CONFIG_MANAGER.get('addr');
 
 APP.onBrowseDirectory((request, response) => {
   const directoryName = request.params.directory;
@@ -19,4 +20,4 @@ APP.onBrowseDirectory((request, response) => {
   });
 });
 
-APP.start(PORT);
+APP.start(ADDR, PORT);
