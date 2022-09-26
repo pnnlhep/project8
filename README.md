@@ -1,3 +1,7 @@
+# ARCHIVED
+
+This is no longer used or developed. It may be interesting for historical reasons.
+
 # Frontend app
 
 `cd` into `frontend` folder
